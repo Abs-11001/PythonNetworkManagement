@@ -1,93 +1,21 @@
-# -*- coding: utf-8 -*-
+from PyQt5 import QtGui
+import assets.UI.loginWindowUi as loginWindowUi
+import requests
+import threading
+from PyQt5.QtWidgets import QApplication,QMainWindow
 
-# Form implementation generated from reading ui file 'loginWindow.ui'
-#
-# Created by: PyQt5 UI code generator 5.9.2
-#
-# WARNING! All changes made in this file will be lost!
+class login(loginWindowUi.Ui_MainWindow):
+    def __init__(self,mainWindow):
+        super().setupUi(mainWindow)
+        self.pushButton.clicked.connect(lambda:self.loginClick(self.topImage))
+        topImageFile = QtGui.QPixmap('assets/imgs/topImage.jpg')
+        self.topImage.setPixmap(topImageFile)
+        self.topImage.setScaledContents(True)
+    def loginClick(self,topImage):
+        # topImage.setText("fff")
+        thread = threading.Thread(target=self.loginCount,args=(self.loginUser,))
+        thread.start()
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.setEnabled(True)
-        MainWindow.resize(361, 272)
-        MainWindow.setMinimumSize(QtCore.QSize(361, 230))
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.layoutWidget.setGeometry(QtCore.QRect(64, 170, 251, 41))
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.layoutWidget)
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.checkBox = QtWidgets.QCheckBox(self.layoutWidget)
-        self.checkBox.setObjectName("checkBox")
-        self.horizontalLayout_3.addWidget(self.checkBox)
-        self.checkBox_2 = QtWidgets.QCheckBox(self.layoutWidget)
-        self.checkBox_2.setObjectName("checkBox_2")
-        self.horizontalLayout_3.addWidget(self.checkBox_2)
-        self.label_3 = QtWidgets.QLabel(self.layoutWidget)
-        self.label_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.label_3.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.label_3.setObjectName("label_3")
-        self.horizontalLayout_3.addWidget(self.label_3)
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(70, 210, 220, 51))
-        self.pushButton.setAutoFillBackground(False)
-        self.pushButton.setObjectName("pushButton")
-        self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(10, 250, 60, 16))
-        font = QtGui.QFont()
-        font.setUnderline(False)
-        font.setStrikeOut(False)
-        font.setKerning(True)
-        self.label_4.setFont(font)
-        self.label_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.label_4.setObjectName("label_4")
-        self.topImage = QtWidgets.QLabel(self.centralwidget)
-        self.topImage.setGeometry(QtCore.QRect(0, 0, 361, 91))
-        self.topImage.setText("")
-        self.topImage.setObjectName("topImage")
-        self.widget = QtWidgets.QWidget(self.centralwidget)
-        self.widget.setGeometry(QtCore.QRect(70, 100, 231, 31))
-        self.widget.setObjectName("widget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label = QtWidgets.QLabel(self.widget)
-        self.label.setObjectName("label")
-        self.horizontalLayout.addWidget(self.label)
-        self.loginUser = QtWidgets.QLineEdit(self.widget)
-        self.loginUser.setEnabled(True)
-        self.loginUser.setObjectName("loginUser")
-        self.horizontalLayout.addWidget(self.loginUser)
-        self.widget1 = QtWidgets.QWidget(self.centralwidget)
-        self.widget1.setGeometry(QtCore.QRect(70, 140, 231, 31))
-        self.widget1.setObjectName("widget1")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget1)
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.label_2 = QtWidgets.QLabel(self.widget1)
-        self.label_2.setObjectName("label_2")
-        self.horizontalLayout_2.addWidget(self.label_2)
-        self.loginPsd = QtWidgets.QLineEdit(self.widget1)
-        self.loginPsd.setObjectName("loginPsd")
-        self.horizontalLayout_2.addWidget(self.loginPsd)
-        MainWindow.setCentralWidget(self.centralwidget)
-
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-    def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.checkBox.setText(_translate("MainWindow", "记住密码"))
-        self.checkBox_2.setText(_translate("MainWindow", "自动登陆"))
-        self.label_3.setText(_translate("MainWindow", "找回密码"))
-        self.pushButton.setText(_translate("MainWindow", "登陆"))
-        self.label_4.setText(_translate("MainWindow", "注册账号"))
-        self.label.setText(_translate("MainWindow", "账号:"))
-        self.label_2.setText(_translate("MainWindow", "密码:"))
-
+    def loginCount(self,loginUser):
+        res = requests.get("http://www.flask.waheng.fun:7878/checkIn?qq=" + loginUser.text())
+        print(res.text)

@@ -1,4 +1,4 @@
-from PyQt5 import QtGui
+from PyQt5 import QtGui,QtWidgets,QtCore
 import assets.UI.loginWindowUi as loginWindowUi
 import assets.UI.chatWindowUi as chatWindowUi
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -37,4 +37,14 @@ class login(loginWindowUi.Ui_MainWindow):
 class chat(chatWindowUi.Ui_MainWindow):
     def __init__(self, mainWindow):
         super().setupUi(mainWindow)
+        self.listWidget.addItem("柏乐佳")
+        self.listWidget.addItem("朱石磊")
+        self.listWidget.addItem("已接近")
+        # self.listWidget.item(0).setTextAlignment(4)
+        self.listWidget.itemClicked.connect(self.listItemClicked)
+
+    def listItemClicked(self,index):
+        itemName = self.listWidget.item(self.listWidget.row(index)).text()
+        self.titleName.setText(itemName)
+
 

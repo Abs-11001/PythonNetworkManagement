@@ -1,9 +1,6 @@
 import sys
 
-from PyQt5 import QtGui
 from loginWindow import login
-import requests
-import threading
 from PyQt5.QtWidgets import QApplication,QMainWindow
 
 

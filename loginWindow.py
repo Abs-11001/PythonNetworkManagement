@@ -37,14 +37,27 @@ class login(loginWindowUi.Ui_MainWindow):
 class chat(chatWindowUi.Ui_MainWindow):
     def __init__(self, mainWindow):
         super().setupUi(mainWindow)
+        # 聊天界面刚加载进去的时候是不显示任何东西的，用一个标志来标识是否有联系人被点击了
+        self.clickEdFlag = False
         self.listWidget.addItem("柏乐佳")
         self.listWidget.addItem("朱石磊")
-        self.listWidget.addItem("已接近")
-        # self.listWidget.item(0).setTextAlignment(4)
         self.listWidget.itemClicked.connect(self.listItemClicked)
+
 
     def listItemClicked(self,index):
         itemName = self.listWidget.item(self.listWidget.row(index)).text()
         self.titleName.setText(itemName)
+        # 如果是第一次点击联系人的话就加载基本图标
+        if not self.clickEdFlag:
+            # 加载基本样式
+            self.widget_2.setStyleSheet("#widget_3,#widget_4,#widget_5{\n"
+                                        "    border-bottom: 1.5px solid #DCDCDC;\n"
+                                        "    background-color: #F1F1F1;\n"
+                                        "}")
+            # 初始化基本图标
+            self.send_emoji_btn.setIcon(QtGui.QIcon("assets/imgs/icon/smile.svg"))
+            self.send_file_btn.setIcon(QtGui.QIcon("assets/imgs/icon/file.svg"))
+            self.look_history_btn.setIcon(QtGui.QIcon("assets/imgs/icon/history.svg"))
+            self.clickEdFlag = True
 
 

@@ -11,9 +11,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(643, 485)
+        MainWindow.resize(648, 483)
         MainWindow.setStyleSheet("#widget_2{\n"
-"    background-color: #F1F1F1;\n"
+"    border-left: 2px;\n"
+"    background-color: #fff;\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -22,22 +23,55 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.widget = QtWidgets.QWidget(self.centralwidget)
-        self.widget.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.widget.setMaximumSize(QtCore.QSize(130, 16777215))
+        self.widget.setStyleSheet("#widget_7{\n"
+"    background-color: #fff;\n"
+"}\n"
+"#listWidget{\n"
+"    background-color:#F7F7F7;\n"
+"}")
         self.widget.setObjectName("widget")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget)
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.widget_7 = QtWidgets.QWidget(self.widget)
+        self.widget_7.setMinimumSize(QtCore.QSize(0, 40))
+        self.widget_7.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.widget_7.setStyleSheet("#searchOradd{\n"
+"    border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"    border:none;\n"
+"    background-color:#ECECEC;\n"
+"}")
+        self.widget_7.setObjectName("widget_7")
+        self.searchOradd = QtWidgets.QLineEdit(self.widget_7)
+        self.searchOradd.setGeometry(QtCore.QRect(7, 10, 95, 21))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.searchOradd.setFont(font)
+        self.searchOradd.setStyleSheet("    background-color:#ECECEC;")
+        self.searchOradd.setObjectName("searchOradd")
+        self.add_btn = QtWidgets.QPushButton(self.widget_7)
+        self.add_btn.setGeometry(QtCore.QRect(107, 10, 20, 21))
+        self.add_btn.setMinimumSize(QtCore.QSize(0, 0))
+        self.add_btn.setMaximumSize(QtCore.QSize(31, 31))
+        self.add_btn.setText("")
+        self.add_btn.setIconSize(QtCore.QSize(16, 16))
+        self.add_btn.setAutoDefault(False)
+        self.add_btn.setDefault(False)
+        self.add_btn.setFlat(False)
+        self.add_btn.setObjectName("add_btn")
+        self.verticalLayout.addWidget(self.widget_7)
         self.listWidget = QtWidgets.QListWidget(self.widget)
         self.listWidget.setAutoFillBackground(False)
         self.listWidget.setStyleSheet("")
         self.listWidget.setObjectName("listWidget")
-        self.horizontalLayout_2.addWidget(self.listWidget)
+        self.verticalLayout.addWidget(self.listWidget)
         self.horizontalLayout.addWidget(self.widget)
         self.widget_2 = QtWidgets.QWidget(self.centralwidget)
-        self.widget_2.setStyleSheet("#widget_3,#widget_4,#widget_5{\n"
-"    border-bottom: 1.5px solid #DCDCDC;\n"
-"    background-color: #F1F1F1;\n"
-"}")
+        self.widget_2.setStyleSheet("")
         self.widget_2.setObjectName("widget_2")
         self.vboxlayout = QtWidgets.QVBoxLayout(self.widget_2)
         self.vboxlayout.setContentsMargins(0, 0, 0, 0)
@@ -60,13 +94,27 @@ class Ui_MainWindow(object):
         self.vboxlayout.addWidget(self.widget_3)
         self.widget_4 = QtWidgets.QWidget(self.widget_2)
         self.widget_4.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setItalic(False)
+        self.widget_4.setFont(font)
         self.widget_4.setObjectName("widget_4")
+        self.label = QtWidgets.QLabel(self.widget_4)
+        self.label.setGeometry(QtCore.QRect(180, 130, 191, 61))
+        font = QtGui.QFont()
+        font.setFamily("Academy Engraved LET")
+        font.setPointSize(25)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setWeight(50)
+        font.setKerning(True)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
         self.vboxlayout.addWidget(self.widget_4)
         self.widget_6 = QtWidgets.QWidget(self.widget_2)
         self.widget_6.setMaximumSize(QtCore.QSize(16777215, 32))
         self.widget_6.setStyleSheet("QPushButton{\n"
 "    border:none;\n"
-"    background-color:#F1F1F1;\n"
+"    background-color:#fff;\n"
 "}")
         self.widget_6.setObjectName("widget_6")
         self.send_emoji_btn = QtWidgets.QPushButton(self.widget_6)
@@ -99,7 +147,17 @@ class Ui_MainWindow(object):
         self.vboxlayout.addWidget(self.widget_6)
         self.widget_5 = QtWidgets.QWidget(self.widget_2)
         self.widget_5.setMaximumSize(QtCore.QSize(16777215, 125))
+        self.widget_5.setStyleSheet("#textEdit{\n"
+"    border: none;\n"
+"}")
         self.widget_5.setObjectName("widget_5")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.widget_5)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.textEdit = QtWidgets.QTextEdit(self.widget_5)
+        self.textEdit.setEnabled(True)
+        self.textEdit.setObjectName("textEdit")
+        self.horizontalLayout_3.addWidget(self.textEdit)
         self.vboxlayout.addWidget(self.widget_5)
         self.horizontalLayout.addWidget(self.widget_2)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -109,5 +167,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "聊天"))
+        self.searchOradd.setPlaceholderText(_translate("MainWindow", "搜索/添加"))
+        self.label.setText(_translate("MainWindow", "Python For Chat"))
 

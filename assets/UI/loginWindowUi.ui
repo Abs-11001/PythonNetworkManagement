@@ -34,16 +34,16 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QCheckBox" name="savePassword">
+      <widget class="QCheckBox" name="rememberUser">
        <property name="text">
-        <string>记住密码</string>
+        <string>记住账号</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="autoLogin">
+      <widget class="QCheckBox" name="rememberPassword">
        <property name="text">
-        <string>自动登陆</string>
+        <string>记住密码</string>
        </property>
       </widget>
      </item>

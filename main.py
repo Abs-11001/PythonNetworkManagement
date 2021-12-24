@@ -1,13 +1,12 @@
 import sys
 
-from loginWindow import login
-from PyQt5.QtWidgets import QApplication,QMainWindow
-
-
+from loginWindow import LoginMainWindow,login
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import QApplication
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    mainWindow = QMainWindow()
+    mainWindow = LoginMainWindow()
     ui = login(mainWindow)
 
     mainWindow.show()

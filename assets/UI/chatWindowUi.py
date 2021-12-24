@@ -13,7 +13,7 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(648, 483)
         MainWindow.setStyleSheet("#widget_2{\n"
-"    border-left: 2px;\n"
+"    border-left: 12px;\n"
 "    background-color: #fff;\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -25,9 +25,10 @@ class Ui_MainWindow(object):
         self.widget = QtWidgets.QWidget(self.centralwidget)
         self.widget.setMaximumSize(QtCore.QSize(130, 16777215))
         self.widget.setStyleSheet("#widget_7{\n"
-"    background-color: #fff;\n"
+"    background-color: #F7F7F7;\n"
 "}\n"
 "#listWidget{\n"
+"    border: none;\n"
 "    background-color:#F7F7F7;\n"
 "}")
         self.widget.setObjectName("widget")
@@ -84,13 +85,13 @@ class Ui_MainWindow(object):
         self.widget_3.setFont(font)
         self.widget_3.setStyleSheet("")
         self.widget_3.setObjectName("widget_3")
-        self.titleName = QtWidgets.QLabel(self.widget_3)
-        self.titleName.setGeometry(QtCore.QRect(10, 10, 71, 31))
+        self.chatObject = QtWidgets.QLabel(self.widget_3)
+        self.chatObject.setGeometry(QtCore.QRect(10, 10, 71, 31))
         font = QtGui.QFont()
         font.setPointSize(18)
-        self.titleName.setFont(font)
-        self.titleName.setText("")
-        self.titleName.setObjectName("titleName")
+        self.chatObject.setFont(font)
+        self.chatObject.setText("")
+        self.chatObject.setObjectName("chatObject")
         self.vboxlayout.addWidget(self.widget_3)
         self.widget_4 = QtWidgets.QWidget(self.widget_2)
         self.widget_4.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -147,17 +148,17 @@ class Ui_MainWindow(object):
         self.vboxlayout.addWidget(self.widget_6)
         self.widget_5 = QtWidgets.QWidget(self.widget_2)
         self.widget_5.setMaximumSize(QtCore.QSize(16777215, 125))
-        self.widget_5.setStyleSheet("#textEdit{\n"
+        self.widget_5.setStyleSheet("#msgContainer{\n"
 "    border: none;\n"
 "}")
         self.widget_5.setObjectName("widget_5")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.widget_5)
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.textEdit = QtWidgets.QTextEdit(self.widget_5)
-        self.textEdit.setEnabled(True)
-        self.textEdit.setObjectName("textEdit")
-        self.horizontalLayout_3.addWidget(self.textEdit)
+        self.msgContainer = QtWidgets.QTextEdit(self.widget_5)
+        self.msgContainer.setEnabled(True)
+        self.msgContainer.setGeometry(QtCore.QRect(0, 0, 518, 125))
+        self.msgContainer.setObjectName("msgContainer")
+        self.sendMsg_btn = QtWidgets.QPushButton(self.widget_5)
+        self.sendMsg_btn.setGeometry(QtCore.QRect(430, 90, 70, 32))
+        self.sendMsg_btn.setObjectName("sendMsg_btn")
         self.vboxlayout.addWidget(self.widget_5)
         self.horizontalLayout.addWidget(self.widget_2)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -170,4 +171,5 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "聊天"))
         self.searchOradd.setPlaceholderText(_translate("MainWindow", "搜索/添加"))
         self.label.setText(_translate("MainWindow", "Python For Chat"))
+        self.sendMsg_btn.setText(_translate("MainWindow", "发送"))
 

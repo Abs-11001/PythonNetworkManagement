@@ -379,64 +379,64 @@ QPushButton{
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_2">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_3">
-               <item>
-                <widget class="QPushButton" name="pushButton_5">
-                 <property name="text">
-                  <string>🥺</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButton_7">
-                 <property name="text">
-                  <string>🙁</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButton_6">
-                 <property name="text">
-                  <string>😘</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButton_8">
-                 <property name="text">
-                  <string>😤</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
               <layout class="QHBoxLayout" name="horizontalLayout_2">
                <item>
-                <widget class="QPushButton" name="pushButton_3">
+                <widget class="QPushButton" name="emoji_1">
                  <property name="text">
-                  <string>😂</string>
+                  <string>😀</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_4">
-                 <property name="text">
-                  <string>😅</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButton_2">
+                <widget class="QPushButton" name="emoji_2">
                  <property name="text">
                   <string>😍</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton">
+                <widget class="QPushButton" name="emoji_3">
                  <property name="text">
-                  <string>😀</string>
+                  <string>😂</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="emoji_4">
+                 <property name="text">
+                  <string>😅</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <widget class="QPushButton" name="emoji_5">
+                 <property name="text">
+                  <string>🥺</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="emoji_6">
+                 <property name="text">
+                  <string>😘</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="emoji_7">
+                 <property name="text">
+                  <string>🙁</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="emoji_8">
+                 <property name="text">
+                  <string>😤</string>
                  </property>
                 </widget>
                </item>
@@ -445,30 +445,30 @@ QPushButton{
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_4">
                <item>
-                <widget class="QPushButton" name="pushButton_9">
+                <widget class="QPushButton" name="emoji_9">
                  <property name="text">
-                  <string>😘</string>
+                  <string>😡</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_12">
+                <widget class="QPushButton" name="emoji_10">
                  <property name="text">
-                  <string>🥺</string>
+                  <string>🤔</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_11">
+                <widget class="QPushButton" name="emoji_11">
                  <property name="text">
-                  <string>🙁</string>
+                  <string>👍</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_10">
+                <widget class="QPushButton" name="emoji_12">
                  <property name="text">
-                  <string>😤</string>
+                  <string>🐶</string>
                  </property>
                 </widget>
                </item>

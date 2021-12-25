@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(648, 483)
+        MainWindow.resize(643, 483)
         MainWindow.setStyleSheet("#widget_2{\n"
 "    border-left: 12px;\n"
 "    background-color: #fff;\n"
@@ -30,6 +30,9 @@ class Ui_MainWindow(object):
 "#listWidget{\n"
 "    border: none;\n"
 "    background-color:#F7F7F7;\n"
+"}\n"
+"#widget_8{\n"
+"    background-color: #59BAF3;\n"
 "}")
         self.widget.setObjectName("widget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
@@ -70,6 +73,26 @@ class Ui_MainWindow(object):
         self.listWidget.setStyleSheet("")
         self.listWidget.setObjectName("listWidget")
         self.verticalLayout.addWidget(self.listWidget)
+        self.widget_8 = QtWidgets.QWidget(self.widget)
+        self.widget_8.setMinimumSize(QtCore.QSize(0, 40))
+        self.widget_8.setStyleSheet("QPushButton{\n"
+"    border: none;\n"
+"}")
+        self.widget_8.setObjectName("widget_8")
+        self.add_friend_msg = QtWidgets.QLabel(self.widget_8)
+        self.add_friend_msg.setGeometry(QtCore.QRect(7, 3, 121, 16))
+        self.add_friend_msg.setObjectName("add_friend_msg")
+        self.agree_btn = QtWidgets.QPushButton(self.widget_8)
+        self.agree_btn.setGeometry(QtCore.QRect(20, 14, 28, 28))
+        self.agree_btn.setText("")
+        self.agree_btn.setIconSize(QtCore.QSize(19, 19))
+        self.agree_btn.setObjectName("agree_btn")
+        self.refuse_btn = QtWidgets.QPushButton(self.widget_8)
+        self.refuse_btn.setGeometry(QtCore.QRect(80, 13, 28, 28))
+        self.refuse_btn.setText("")
+        self.refuse_btn.setIconSize(QtCore.QSize(20, 20))
+        self.refuse_btn.setObjectName("refuse_btn")
+        self.verticalLayout.addWidget(self.widget_8)
         self.horizontalLayout.addWidget(self.widget)
         self.widget_2 = QtWidgets.QWidget(self.centralwidget)
         self.widget_2.setStyleSheet("")
@@ -98,6 +121,9 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setItalic(False)
         self.widget_4.setFont(font)
+        self.widget_4.setStyleSheet("#chatShow{\n"
+"    border: none;\n"
+"}")
         self.widget_4.setObjectName("widget_4")
         self.label = QtWidgets.QLabel(self.widget_4)
         self.label.setGeometry(QtCore.QRect(180, 130, 191, 61))
@@ -110,6 +136,12 @@ class Ui_MainWindow(object):
         font.setKerning(True)
         self.label.setFont(font)
         self.label.setObjectName("label")
+        self.chatShow = QtWidgets.QTextEdit(self.widget_4)
+        self.chatShow.setGeometry(QtCore.QRect(0, 0, 510, 276))
+        self.chatShow.setReadOnly(True)
+        self.chatShow.setObjectName("chatShow")
+        self.chatShow.raise_()
+        self.label.raise_()
         self.vboxlayout.addWidget(self.widget_4)
         self.widget_6 = QtWidgets.QWidget(self.widget_2)
         self.widget_6.setMaximumSize(QtCore.QSize(16777215, 32))
@@ -170,6 +202,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "聊天"))
         self.searchOradd.setPlaceholderText(_translate("MainWindow", "搜索/添加"))
+        self.add_friend_msg.setText(_translate("MainWindow", "朱石磊请求添加好友"))
         self.label.setText(_translate("MainWindow", "Python For Chat"))
         self.sendMsg_btn.setText(_translate("MainWindow", "发送"))
 

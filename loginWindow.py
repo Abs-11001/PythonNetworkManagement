@@ -1,22 +1,23 @@
-from PyQt5 import QtGui,QtCore
+# coding=utf-8
+
+from PyQt5 import QtGui, QtCore
 from PyQt5.QtWidgets import QMainWindow, QLineEdit, QApplication, QWidget, QMessageBox
 from PyQt5.QtCore import *
 
 import assets.UI.loginWindowUi as loginWindowUi
 import os,json
-from chatWindow import ChatMainWindow,chat
+from chatWindow import ChatMainWindow,Chat
 
-def messageDialog(text):
-    # 核心功能代码就两行，可以加到需要的地方
-    msg_box = QMessageBox(QMessageBox.Warning, '警告', text)
-    msg_box.exec_()
+def messageDialog(parentWidget, text):
+    # 参考： https://www.cnblogs.com/leokale-zz/p/13106721.html
+    msg_box = QMessageBox.critical(parentWidget, "警告", text, QMessageBox.Yes)
 
 class LoginMainWindow(QMainWindow):
     # 检测键盘回车按键
     def keyPressEvent(self, event):
         pass
 
-class login(loginWindowUi.Ui_MainWindow):
+class Login(loginWindowUi.Ui_MainWindow):
     def __init__(self, mainWindow):
         super().setupUi(mainWindow)
         self.mainWindow = mainWindow
@@ -24,10 +25,6 @@ class login(loginWindowUi.Ui_MainWindow):
 
         # 设置密码框输入模式为密码模式
         self.loginPsd.setEchoMode(QLineEdit.Password)
-
-        # 先初始化聊天窗口的对象
-        self.chatMainWindow = ChatMainWindow()
-        self.chatWindow = chat(self.chatMainWindow)
 
         # 设置登陆界面的头图
         topImageFile = QtGui.QPixmap('assets/imgs/topImage.jpg')
@@ -51,13 +48,28 @@ class login(loginWindowUi.Ui_MainWindow):
         '''
         user = self.loginUser.text()
         psd = self.loginPsd.text()
-        if user == None or psd == None:
-            messageDialog("请填写账号或密码!")
+        if user == "" or psd == "":
+            messageDialog(self.mainWindow,"请填写账号或密码!")
             return
 
         if user == "123" and psd == "123":
             # 当验证通过后，判断是否勾选了保存密码
             self.saveUserInfo()
+
+            # 先初始化聊天窗口的对象
+            self.chatMainWindow = ChatMainWindow()
+            self.chatWindow = Chat(self.chatMainWindow, user)
+
+            # 然后显示聊天界面并关闭登陆界面
+            self.chatMainWindow.show()
+            self.mainWindow.close()
+        if user == "456" and psd == "456":
+            # 当验证通过后，判断是否勾选了保存密码
+            self.saveUserInfo()
+
+            # 先初始化聊天窗口的对象
+            self.chatMainWindow = ChatMainWindow()
+            self.chatWindow = Chat(self.chatMainWindow, user)
 
             # 然后显示聊天界面并关闭登陆界面
             self.chatMainWindow.show()
@@ -81,14 +93,12 @@ class login(loginWindowUi.Ui_MainWindow):
 
         # 记住账号被勾选
         if rememberUser:
-            print("user")
             with open(path + "user.json", "w") as file:
                 user = {"user": self.loginUser.text(), "rememberUser": rememberUser, "rememberPsd": rememberPsd}
                 json.dump(user, file)
 
         # 记住密码被勾选
         if rememberPsd:
-            print("psd")
             with open(path + "user.json","w") as file:
                 user = {"user": self.loginUser.text(), "psd": self.loginPsd.text(), "rememberUser": rememberUser, "rememberPsd": rememberPsd}
                 json.dump(user,file)

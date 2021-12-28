@@ -500,7 +500,7 @@ class Chat(chatWindowUi.Ui_MainWindow):
         :param to_user: 聊天对象
         :return:
         """
-
+        self.chatShow.setText("")
         path = "assets/config/" + from_user + "to" + to_user + ".record"
         try:
             with open(path,encoding='utf-8') as file:

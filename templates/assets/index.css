@@ -1,0 +1,52 @@
+*{
+  margin:0px;
+  padding:0px;
+}
+h1{
+  text-align:center;
+  height:200px;
+  line-height: 200px;
+  white-space: nowrap;
+  color:white;
+  background-color: #224854;
+}
+h1 span{
+  border-bottom:3px double #75bcf7;
+}
+h1 a{
+    color:white;
+    text-decoration:none;
+}
+
+form{
+  width:100%;
+  
+  margin-top:2%;
+}
+form table{
+  margin:0 auto;
+}
+form table label{
+  white-space: nowrap;
+}
+form table input{
+  outline:none;
+}
+form table #sub{
+  display:block;
+  width:50%;
+  height:2em;
+  margin:0px auto;
+  color:white;
+  font-size:1em;
+  background-color:#224854;
+  border:1px solid #224854;
+  border-radius:5px;
+}
+.tip{
+  text-align:center;
+}
+.err{
+  font-size:13px;
+  color:red;
+}

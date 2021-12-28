@@ -5,8 +5,9 @@ from PyQt5.QtWidgets import QMainWindow, QLineEdit, QApplication, QWidget, QMess
 from PyQt5.QtCore import *
 
 import assets.UI.loginWindowUi as loginWindowUi
-import os,json
+import os, json
 from chatWindow import ChatMainWindow,Chat
+import webbrowser
 
 def messageDialog(parentWidget, text):
     # 参考： https://www.cnblogs.com/leokale-zz/p/13106721.html
@@ -41,6 +42,9 @@ class Login(loginWindowUi.Ui_MainWindow):
         # 绑定登陆点击
         self.loginBtn.clicked.connect(lambda: self.loginClick())
 
+        # 绑定注册账号
+        self.registerAccount.clicked.connect(lambda: self.openRegister())
+
     def loginClick(self):
         '''
         :param loginMainWindow: 登陆界面的 mainwindow，打开聊天界面后，用来关闭登陆界面
@@ -52,28 +56,31 @@ class Login(loginWindowUi.Ui_MainWindow):
             messageDialog(self.mainWindow,"请填写账号或密码!")
             return
 
-        if user == "123" and psd == "123":
-            # 当验证通过后，判断是否勾选了保存密码
-            self.saveUserInfo()
+        info = {}
+        try:
+            with open("assets/config/account.json", "r", encoding='utf-8') as file:
+                info = json.load(file)
+                if user in info.keys():
+                    if psd == info[user]['psd']:
+                        user_name = info[user]['user_name']
+                        print(user_name)
+                        # 当验证通过后，判断是否勾选了保存密码
+                        self.saveUserInfo()
 
-            # 先初始化聊天窗口的对象
-            self.chatMainWindow = ChatMainWindow()
-            self.chatWindow = Chat(self.chatMainWindow, user)
+                        # 先初始化聊天窗口的对象
+                        self.chatMainWindow = ChatMainWindow()
+                        self.chatWindow = Chat(self.chatMainWindow, user)
 
-            # 然后显示聊天界面并关闭登陆界面
-            self.chatMainWindow.show()
-            self.mainWindow.close()
-        if user == "456" and psd == "456":
-            # 当验证通过后，判断是否勾选了保存密码
-            self.saveUserInfo()
+                        # 然后显示聊天界面并关闭登陆界面
+                        self.chatMainWindow.show()
+                        self.mainWindow.close()
+                    else:
+                        messageDialog(self.mainWindow, "账号或密码错误!")
+                else:
+                    messageDialog(self.mainWindow, "请先注册账号!")
 
-            # 先初始化聊天窗口的对象
-            self.chatMainWindow = ChatMainWindow()
-            self.chatWindow = Chat(self.chatMainWindow, user)
-
-            # 然后显示聊天界面并关闭登陆界面
-            self.chatMainWindow.show()
-            self.mainWindow.close()
+        except:
+            messageDialog(self.mainWindow, "请先注册账号!")
 
     def saveUserInfo(self):
         """
@@ -134,3 +141,9 @@ class Login(loginWindowUi.Ui_MainWindow):
         if rememberPsd_state == 2:
             self.rememberUser.setChecked(True)
 
+    def openRegister(self):
+        registerUrl = "http://localhost:7878/register"
+        try:
+            webbrowser.get('chrome').open_new_tab(registerUrl)
+        except Exception as e:
+            webbrowser.open_new_tab(registerUrl)

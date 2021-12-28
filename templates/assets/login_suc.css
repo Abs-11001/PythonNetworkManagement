@@ -1,0 +1,56 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+h1{
+    text-align:center;
+    height:200px;
+    line-height: 200px;
+    color:white;
+    background-color: #224854;
+}
+h1 span{
+    border-bottom:3px double #75bcf7;
+}
+.logout{
+    float:right;
+}
+h2{
+    text-align:center;
+    margin-top:2%;
+}
+.box{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    flex:1;
+    margin-top: 3%;
+}
+.load{
+    width:220px;
+    float:left;
+}
+.load form{
+    margin-left:21px;
+}
+.load form #sub{
+    width:70%;
+    height: 35px;
+    margin-top:21px;
+}
+form > *{
+    margin-top:10px;
+}
+#des,#rename{
+    color:#999999;
+}
+.box .operate table,tr,th,td{
+    border:1px solid black;
+    border-collapse:collapse;
+}
+.box .operate table tr td{
+    text-align:center;
+}
+.box .operate table tr .del{
+    color:red;
+}
